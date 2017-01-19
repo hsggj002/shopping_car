@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+while True:
+    salary = input('Please enter your salary: ')
+    if salary.isdigit():
+        salary=int(salary)
+        break
+    else:
+        print('Please enter a num;')
+
+pro = [
+    ['mac',12000],
+    ['iphon',6500],
+    ['bike',900],
+    ['cofee',30]
+]
+shop_car=[]
+prod=[]
+pay=[]
+
+while True:
+    print('pro info'.center(50,'-'))
+    for index,i in enumerate(pro):
+        print(index,i[0],i[1])
+
+    choice = input('Please enter your choice >>: ')
+    if choice.isdigit():
+        choice = int(choice)
+        if choice >= len(pro):
+            print('\033[31m"You choice is out of range or not have the production,please try agin"\033[0m')
+            continue
+        if pro[choice][1] < salary:
+            salary-=pro[choice][1]
+            production = shop_car.append(pro[choice])
+            production2 = prod.append(pro[choice][0])
+            pay.append(pro[choice][1])
+            print('The \033[31m"%s"\033[0m is added the shop_car, and your blance is \033[31m"%d"\033[0m'\
+                  %(pro[choice][0],salary))
+        else:
+            print('\033[31m"The blance is not enough"\033[0m')
+    elif choice == 'q':
+        for i in set(prod):
+            print('your buy prodution is \033[32m"%s"\033[0m,the count is \033[32m"%s"\033[0m'%(i,prod.count(i)))
+        count = 0
+        for i in pay:
+            count+=i
+        print('your cost tatol is \033[31m"%d"\033[0m, and your blacnce is \033[31;1m"%d"\033[0m'%(count,salary))
+        break
+    else:
+        print('Please choice a index for \033[31m"pro info"\033[0m')
+
